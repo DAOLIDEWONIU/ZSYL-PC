@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="{$keywords}" />
+<meta name="description" content="{$description}" />
+<title>{$page_title}</title>
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="images/jquery.min.js"></script>
+<script type="text/javascript" src="images/global.js"></script>
+<script type="text/javascript" src="images/show.js"></script>
+<script type="text/javascript" src="images/html5shiv.js"></script>
+<script type="text/javascript" src="images/IE9.js"></script>
+</head>
+<body>
+{include file="inc/fixed.tpl"}
+<div id="wrapper"> {include file="inc/header.tpl"}
+<div class="product-banner"></div>
+<div class="index-content">
+ <div class="wrap mb product">
+  <div id="pageLeft"> {include file="inc/product_tree.tpl"} </div>
+  <div id="pageIn"> {include file="inc/ur_here.tpl"}
+   <div class="productList"> 
+    <!-- {foreach from=$product_list name=product_list item=product} --> 
+    <dl<!-- {if $smarty.foreach.product_list.last} --> class="last"<!-- {/if} -->>
+    <dt class="IMG-view"><a href="{$product.url}"><img src="{$product.image}" alt="{$product.name}" width="{$site.thumb_width}" height="{$site.thumb_height}" /></a></dt>
+    <dd class="MB-mes">
+    	<h3 title="{$product.name}">{$product.name}</h3>
+     <ul class="name">
+     	<li><i class="big" title="点击查看大图"></i></li>
+     	<li><a href="{$product.url}" title="点击查看详情"><i class="link"></i></a></li>
+     </ul>
+     
+     <p class="brief">{$product.description|truncate:50:"..."}</p>
+     <p class="price">{$lang.price}：{$product.price}</p>
+     <p><a href="{$product.url}" class="btn">{$lang.product_buy}</a></p>
+    </dd>
+    </dl>
+    <!-- {/foreach} -->
+    <div class="clear"></div>
+   </div>
+   {include file="inc/pager.tpl"} </div>
+  <div class="clear"></div>
+ </div>
+ </div>
+
+ {include file="inc/online_service.tpl"}
+ {include file="inc/footer.tpl"} </div>
+
+ <div class="popup"></div>
+ <div class="popup-inner">
+    	<div class="popup-top">
+        	<h3>{$product.name}</h3>
+            <i class="close-btn" title="关闭"></i>
+            <i class="close-btn1"></i>
+        </div>
+        <div class="left-btn"><i class="left" title="上一张"></i></div>
+        <div class="right-btn"><i class="right" title="下一张"></i></div>
+         <div class="proImg">
+          	<a href="{$product.url}" title="点击图片进入详情" target="_blank"><img src="{$product.image}"  /></a>
+         </div>
+     </div>
+</body>
+</html>
